@@ -6,6 +6,7 @@
           <div class="flex flex-shrink-0 items-center">
             <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
           </div>
+          <!-- menu options ------------------------ -->
           <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
             <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
             <a href="#" class="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900">Dashboard</a>
@@ -14,6 +15,7 @@
             <a href="#" class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Calendar</a>
           </div>
         </div>
+        <!-- search bar------------------------- -->
         <div class="flex flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-end">
           <div class="w-full max-w-lg lg:max-w-xs">
             <label for="search" class="sr-only">Search</label>
@@ -40,6 +42,7 @@
             <span class="sr-only">View notifications</span>
             <BellIcon class="h-6 w-6" aria-hidden="true" />
           </button>
+          <CartButton />
 
           <!-- Profile dropdown -->
           <Menu as="div" class="relative ml-4 flex-shrink-0">
@@ -104,13 +107,11 @@
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
-import { Bars3Icon, BellIcon, XMarkIcon, Shopping } from '@heroicons/vue/24/outline'
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { useCartStore } from '@/stores/cart'
+import CartButton from '@/components/CartButton.vue'
 
 const isCartOpen = useCartStore().isCartOpen
-
-
-console.log(isCartOpen.value);
 
 
 
