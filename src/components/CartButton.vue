@@ -10,12 +10,12 @@
 </template>
 
 <script lang="ts" setup>
-import CartFilledIcon from '@/assets/icons/cart-filled.svg'
-import CartIcon from '@/assets/icons/cart.svg'
-import LoadingIcon from '@/assets/icons/loading-spinner.svg'
-import { useCartStore } from '@/stores/cart'
+  import CartFilledIcon from '@/assets/icons/cart-filled.svg'
+  import CartIcon from '@/assets/icons/cart.svg'
+  import LoadingIcon from '@/assets/icons/loading-spinner.svg'
+  import { useCartStore } from '@/stores/cart'
 
-const cartStore = useCartStore()
-const cartToggler = () => { cartStore.isCartOpen = true }
+  const cartStore = useCartStore()
+  const cartToggler = () => { cartStore.isCartOpen = true }
 
 </script>
