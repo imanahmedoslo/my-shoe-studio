@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import ImageSlider from '@/components/ImageSlider/ImageSlider.vue'
-import ProductCard from '@/components/PLP/ProductCard.vue'
+import ImageSlider from '@/components/ImageSlider/imageSlider.vue'
+import ProductCard from '@/components/PLP/productCard.vue'
 
 const LandingPageCarusel = [
   'https://www.rollingstone.com/wp-content/uploads/2018/06/rs-nike-v1-f85d403c-908d-42be-acd5-ef60bef6fe94.jpg?w=1500&h=900&crop=1',
