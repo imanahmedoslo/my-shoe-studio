@@ -21,8 +21,7 @@ https://ismail9k.github.io/vue3-carousel/examples.html -->
 <script setup lang="ts">
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import { onMounted, onUnmounted, ref, watch } from 'vue';
-import 'vue3-carousel/dist/carousel.css'
-import type { log } from 'console';
+import 'vue3-carousel/dist/carousel.css';
 
 
 const props = defineProps<{ 
@@ -31,21 +30,18 @@ const props = defineProps<{
 
 const myCarousel = ref()
 
-let intervalId:NodeJS.Timeout | undefined;
+let intervalId:any;
 let CountSlides = ref(0);
 watch(() => myCarousel.value?.data.currentSlide?.value, (newIndex) => {
   CountSlides.value = newIndex ?? 0;
-  console.log(newIndex);
 }, { immediate: true });
 
 function ForwardManually() {
-  console.log(CountSlides.value)
   if(CountSlides.value < props.LandingPageCarusel.length - 1&&CountSlides.value!==0){
         myCarousel.value.next?.();
       }
       else if(CountSlides.value===0){
         myCarousel.value.slideTo?.(props.LandingPageCarusel.length - 1);
-        console.log("hey")
       }
       else{
         myCarousel.value.slideTo?.(0);
