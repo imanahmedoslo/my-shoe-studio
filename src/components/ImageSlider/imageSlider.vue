@@ -30,7 +30,7 @@ const props = defineProps<{
 
 const myCarousel = ref()
 
-let intervalId:NodeJS.Timeout | undefined;
+let intervalId:any;
 let CountSlides = ref(0);
 watch(() => myCarousel.value?.data.currentSlide?.value, (newIndex) => {
   CountSlides.value = newIndex ?? 0;
