@@ -34,17 +34,14 @@ let intervalId:any;
 let CountSlides = ref(0);
 watch(() => myCarousel.value?.data.currentSlide?.value, (newIndex) => {
   CountSlides.value = newIndex ?? 0;
-  console.log(newIndex);
 }, { immediate: true });
 
 function ForwardManually() {
-  console.log(CountSlides.value)
   if(CountSlides.value < props.LandingPageCarusel.length - 1&&CountSlides.value!==0){
         myCarousel.value.next?.();
       }
       else if(CountSlides.value===0){
         myCarousel.value.slideTo?.(props.LandingPageCarusel.length - 1);
-        console.log("hey")
       }
       else{
         myCarousel.value.slideTo?.(0);
