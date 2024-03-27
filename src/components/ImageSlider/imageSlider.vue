@@ -21,8 +21,7 @@ https://ismail9k.github.io/vue3-carousel/examples.html -->
 <script setup lang="ts">
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import { onMounted, onUnmounted, ref, watch } from 'vue';
-import 'vue3-carousel/dist/carousel.css'
-import type { log } from 'console';
+import 'vue3-carousel/dist/carousel.css';
 
 
 const props = defineProps<{ 
