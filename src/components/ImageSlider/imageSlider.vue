@@ -1,12 +1,16 @@
 <template>
-  <Carousel ref="myCarousel" class="border cursor-grab hover:shadow mb-3 pb-3">
+  <Carousel ref="myCarousel" class="border cursor-grab hover:shadow mb-3 pb-3"
+  @mouseenter="stopSliderShow"
+  @mouseleave="startSlideShow"
+  @click="ForwardManually"
+  >
     <Slide v-for="item in LandingPageCarusel" :key="item">
       <img class="carousel__item" :src="item" alt="">
     </Slide>
 
     <template #addons>
-      <Navigation />
-      <Pagination />
+      <Navigation @click="ForwardManually" />
+      <Pagination  />
     </template>
   </Carousel>
 </template>
@@ -16,28 +20,70 @@ https://ismail9k.github.io/vue3-carousel/examples.html -->
 
 <script setup lang="ts">
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref, watch } from 'vue';
 import 'vue3-carousel/dist/carousel.css'
+import type { log } from 'console';
+
 
 const props = defineProps<{ 
   LandingPageCarusel: string[]
 }>()
 
-const myCarousel = ref(null)
-let countSlides = 0
+const myCarousel = ref()
+
+let intervalId:NodeJS.Timeout | undefined;
+let CountSlides = ref(0);
+watch(() => myCarousel.value?.data.currentSlide?.value, (newIndex) => {
+  CountSlides.value = newIndex ?? 0;
+  console.log(newIndex);
+}, { immediate: true });
+
+function ForwardManually() {
+  console.log(CountSlides.value)
+  if(CountSlides.value < props.LandingPageCarusel.length - 1&&CountSlides.value!==0){
+        myCarousel.value.next?.();
+      }
+      else if(CountSlides.value===0){
+        myCarousel.value.slideTo?.(props.LandingPageCarusel.length - 1);
+        console.log("hey")
+      }
+      else{
+        myCarousel.value.slideTo?.(0);
+
+      }
+  
+}
 
 // TODO: Fix type error
 // TODO: Fiks sånn at hvis man bytter slide selv så stopper auto bytte
-setInterval(() => {
-  countSlides++
-  if (countSlides < props.LandingPageCarusel.length) {
-    myCarousel.value.next()
-    
-  } else {
-    countSlides = 0
-    myCarousel.value.slideTo(0)
-  }  
-}, 3000);
+function startSlideShow() {
+  stopSliderShow();
+  intervalId = setInterval(() => {
+    if (myCarousel.value && props.LandingPageCarusel) {
+      if(CountSlides.value < props.LandingPageCarusel.length - 1){
+        myCarousel.value.next?.();
+      }
+      else{
+        myCarousel.value.slideTo?.(0);
+
+      }
+
+      
+    }
+  }, 3000);
+}
+
+onMounted(()=>{
+  startSlideShow();
+})
+function stopSliderShow(){
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
+}
+onUnmounted(() => {
+ stopSliderShow();
+});
 
 
 
