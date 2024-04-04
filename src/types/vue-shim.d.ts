@@ -5,3 +5,4 @@ declare module "*.vue" {
     export default component
   }
   
+  // TODO: Remove this file if ts is fixed
