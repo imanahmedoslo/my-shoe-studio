@@ -1,6 +1,6 @@
 <template>
   <Content>
-    <div class="px-4 sm:px-6 lg:px-12 py-12">
+    <div class="px-4 sm:px-6 lg:px-12 py-12 ">
       <h1 class="text-2xl font-semibold leading-6 mb-7 text-gray-900">Dashboard</h1>
       <div class="flex flex-col gap-3 border justify-between w-full bg-gray-50 rounded-lg mb-7 px-7 py-6 border-gray-300">
         <div class="">
@@ -22,7 +22,10 @@
             </div>
           </div>
           <p class="text-2xl font-bold">Monthly Sales Overview</p>
+        </div>
+        <div class=" flex flex-col gap-28">
           <LineChart :chartData="data" />
+          <BarChart :chartData="data" />
         </div>
       </div>
     </div>
@@ -31,7 +34,7 @@
 
 <script setup lang="ts">
 import Content from '@/components/Content.vue';
-import { DoughnutChart, LineChart } from 'vue-chart-3';
+import { DoughnutChart, LineChart, BarChart } from 'vue-chart-3';
 import { Chart, registerables } from "chart.js";
 
 Chart.register(...registerables);
