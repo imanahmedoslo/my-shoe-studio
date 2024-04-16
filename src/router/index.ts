@@ -7,6 +7,7 @@ import DashboardView from '../views/backOffice/DashBoardView.vue'
 import OrdersListView from '@/views/backOffice/OrdersListView.vue'
 import OrderDetailView from '@/views/backOffice/OrderDetailView.vue'
 import SignInView from '@/views/SignInView.vue'
+import CreateProduct from '@/views/backOffice/CreateProduct.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +45,14 @@ const router = createRouter({
       path: '/BO/Dashboard',
       name: 'Dashboard',
       component: DashboardView,
+      meta: {
+        backOffice: true
+      }
+    },
+    {
+      path: '/BO/CreateProduct',
+      name: 'CreateProduct',
+      component: CreateProduct,
       meta: {
         backOffice: true
       }
